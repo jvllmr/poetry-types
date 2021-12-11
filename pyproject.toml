@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "poetry-types"
+version = "0.1.0"
+description = "A poetry plugin that automatically adds type subs as dependencies like the mypy --install-types command."
+authors = ["kreyoo <zunder325@gmail.com>"]
+license = "MIT License"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+poetry = "^1.2.0a2"
+
+
+
+
+[tool.poetry.group.dev.dependencies]
+black = {version = "^21.11-beta.1", allow-prereleases = true}
+pytest = "^6.2.5"
+flake8 = "^4.0.1"
+
+
+
+
+
+
+
+[tool.poetry.plugins."poetry.application.plugin"]
+poetry-types = "poetry_types.poetry_types:PoetryTypes"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
