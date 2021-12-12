@@ -4,7 +4,7 @@ from poetry.console.application import Application
 
 from poetry.console.commands.update import UpdateCommand
 from poetry.console.commands.add import AddCommand
-from poetry.console.commands.install import InstallCommand
+
 from cleo.events.console_events import COMMAND
 from cleo.events.console_command_event import ConsoleCommandEvent
 from poetry_types.commands import (

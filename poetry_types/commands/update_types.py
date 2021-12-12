@@ -1,6 +1,4 @@
-from cleo.helpers import argument, option
 from cleo.io.inputs.argv_input import ArgvInput
-from cleo.io.outputs.output import Verbosity
 
 from poetry_types.commands.add_types import AddTypesCommand
 from poetry_types.commands.remove_types import RemoveTypesCommand

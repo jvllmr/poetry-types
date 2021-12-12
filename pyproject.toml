@@ -19,7 +19,7 @@ classifiers=[
 
 [tool.poetry.dependencies]
 python = "^3.7"
-poetry = "^1.2.0a2"
+poetry = {version = "^1.2.0a2", allow-prereleases = true}
 
 
 

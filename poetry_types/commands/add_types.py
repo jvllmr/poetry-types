@@ -1,8 +1,6 @@
-from cleo.helpers import argument, option
 from cleo.io.inputs.argv_input import ArgvInput
-from cleo.io.inputs.definition import Definition
-from cleo.io.io import IO
-from cleo.io.null_io import NullOutput
+
+
 from cleo.io.outputs.output import Verbosity
 from poetry.console.commands.add import AddCommand
 import sys

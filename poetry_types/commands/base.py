@@ -1,17 +1,11 @@
-from cleo.helpers import argument, option
-from cleo.io.inputs.definition import Definition
-from cleo.io.io import IO
-from poetry.console.application import Application
-from poetry.console.commands.init import InitCommand
-from poetry.console.commands.init import Command
-from cleo.io.inputs.argv_input import ArgvInput
-from poetry.console.io.inputs.run_argv_input import RunArgvInput
+from cleo.helpers import argument
 
-import typing as t
+from cleo.io.io import IO
+
+from poetry.console.commands.init import InitCommand
+
 
 from poetry.console.commands.installer_command import InstallerCommand
-from poetry.core.pyproject.toml import PyProjectTOML
-import os
 
 
 class TypesCommand(InitCommand, InstallerCommand):
@@ -20,7 +14,7 @@ class TypesCommand(InitCommand, InstallerCommand):
     arguments = [
         argument(
             "packages",
-            f"The packages to add/remove the types for.",
+            "The packages to add/remove the types for.",
             optional=True,
             multiple=True,
         )

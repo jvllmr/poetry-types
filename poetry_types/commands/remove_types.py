@@ -1,12 +1,9 @@
-from cleo.io.io import IO
-from cleo.io.outputs.null_output import NullOutput
 from cleo.io.outputs.output import Verbosity
 from poetry.console.commands.remove import RemoveCommand
 import sys
 from poetry_types.commands.base import TypesCommand
-from cleo.helpers import argument, option
+
 from cleo.io.inputs.argv_input import ArgvInput
-from cleo.io.inputs.definition import Definition
 
 
 class RemoveTypesCommand(TypesCommand):
