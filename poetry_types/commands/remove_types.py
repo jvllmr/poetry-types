@@ -4,6 +4,7 @@ import sys
 from poetry_types.commands.base import TypesCommand
 
 from cleo.io.inputs.argv_input import ArgvInput
+from colorama import Fore, Style
 
 
 class RemoveTypesCommand(TypesCommand):
@@ -41,11 +42,18 @@ class RemoveTypesCommand(TypesCommand):
                 )
             )
         if removed_packages:
-            io.write_line("\rRemoved the following type stubs:" + 20 * " ")
+            io.write_line(
+                f"\r{Style.BRIGHT}Removed the following type stubs{Style.RESET_ALL}:"
+                + 20 * " "
+            )
             io.write_line("")
             for package in removed_packages:
-                io.write_line(f"  \U00002022 {package}")
+                io.write_line(
+                    f"  {Fore.GREEN}\U00002022 {Fore.CYAN}{package}{Fore.RESET}"
+                )
         else:
-            io.write_line("\rNo type stubs were removed.")
+            io.write_line(
+                f"\r{Style.BRIGHT}No type stubs were removed{Style.RESET_ALL}."
+            )
 
         io.write_line("")

@@ -20,6 +20,7 @@ classifiers=[
 [tool.poetry.dependencies]
 python = "^3.7"
 poetry = {version = "^1.2.0a2", allow-prereleases = true}
+colorama = "^0.4.4"
 
 
 
@@ -34,6 +35,9 @@ flake8 = "^4.0.1"
 
 
 
+
+[tool.poetry.group.types.dependencies]
+types-colorama = "^0.4.6"
 
 [tool.poetry.plugins."poetry.application.plugin"]
 poetry-types = "poetry_types.poetry_types:PoetryTypes"

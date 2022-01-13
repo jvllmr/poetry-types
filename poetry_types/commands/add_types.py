@@ -1,6 +1,6 @@
 from cleo.io.inputs.argv_input import ArgvInput
 
-
+from colorama import Fore, Style
 from cleo.io.outputs.output import Verbosity
 from poetry.console.commands.add import AddCommand
 import sys
@@ -16,7 +16,7 @@ class AddTypesCommand(TypesCommand):
 
         packages = self.find_packages(io.input.argument("packages"))
         if self._run_after:
-            io.write("Installing missing type stubs...")
+            io.write("Searching and installing missing type stubs...")
             io.set_verbosity(Verbosity.QUIET)
 
         io.set_input(
@@ -43,10 +43,18 @@ class AddTypesCommand(TypesCommand):
                 )
             )
             if installed_packages:
-                io.write_line("\rInstalled the following type stubs:" + 20 * " ")
+                io.write_line(
+                    f"\r{Style.BRIGHT}Installed the following new type stubs{Style.RESET_ALL}:"
+                    + 20 * " "
+                )
                 io.write_line("")
                 for package in installed_packages:
-                    io.write_line(f"  \U00002022 {package}")
+                    io.write_line(
+                        f"  {Fore.GREEN}\U00002022 {Fore.CYAN}{package}{Fore.RESET}"
+                    )
             else:
-                io.write_line("\rNo type stubs were installed." + 20 * " ")
+                io.write_line(
+                    f"\r{Style.BRIGHT}No new type stubs were installed{Style.RESET_ALL}."
+                    + 20 * " "
+                )
         io.write_line("")
