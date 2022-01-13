@@ -10,12 +10,12 @@ Additionally, there are commands you can use to trigger this plugins behaviour:
 
 ## Installation
 
-Run `poetry plugin add poetry-plugin`
+Run `poetry plugin add poetry-types` for global install or run `poetry add poetry-types` to use this plugin with your project.
 
 Note: With poetry version 1.2.0a2 poetry removes all dependencies when using `poetry remove` and so does
 `poetry types remove`. Using poetry from the git repo is recommended when testing this plugin.
 
 ## TODO:
 
-- Add tests
+- Add tests (Waiting for the next release)
 - Make command-line output more beautiful maybe?
