@@ -17,5 +17,4 @@ Note: With poetry version 1.2.0a2 poetry removes all dependencies when using `po
 
 ## TODO:
 
-- Add tests (Waiting for the next release)
-- Make command-line output more beautiful maybe?
+- Add tests (Waiting for the next poetry 1.2 release)
