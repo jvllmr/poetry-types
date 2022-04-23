@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import sys
 
 from cleo.io.inputs.argv_input import ArgvInput
