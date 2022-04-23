@@ -1,10 +1,11 @@
-from cleo.io.outputs.output import Verbosity
-from poetry.console.commands.remove import RemoveCommand
 import sys
-from poetry_types.commands.base import TypesCommand
 
 from cleo.io.inputs.argv_input import ArgvInput
+from cleo.io.outputs.output import Verbosity
 from colorama import Fore, Style
+from poetry.console.commands.remove import RemoveCommand
+
+from poetry_types.commands.base import TypesCommand
 
 
 class RemoveTypesCommand(TypesCommand):

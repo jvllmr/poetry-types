@@ -1,9 +1,10 @@
+import sys
+
 from cleo.io.inputs.argv_input import ArgvInput
 
 from poetry_types.commands.add_types import AddTypesCommand
-from poetry_types.commands.remove_types import RemoveTypesCommand
 from poetry_types.commands.base import TypesCommand
-import sys
+from poetry_types.commands.remove_types import RemoveTypesCommand
 
 
 class UpdateTypesCommand(TypesCommand):
