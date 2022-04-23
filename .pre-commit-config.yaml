@@ -1,0 +1,36 @@
+repos:
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v2.32.0
+    hooks:
+      - id: pyupgrade
+  - repo: https://github.com/hadialqattan/pycln
+    rev: "v1.3.1"
+    hooks:
+      - id: pycln
+  - repo: https://github.com/PyCQA/isort
+    rev: "5.10.1"
+    hooks:
+      - id: isort
+  - repo: https://github.com/psf/black
+    rev: 22.3.0
+    hooks:
+      - id: black
+  - repo: https://github.com/pycqa/flake8
+    rev: "4.0.1"
+    hooks:
+      - id: flake8
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.2.0
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest
+        pass_filenames: false
+        language: script
+        stages: [commit, merge-commit]
+        types_or: [python, toml]
+        entry: .venv/bin/pytest
