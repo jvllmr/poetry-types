@@ -1,10 +1,6 @@
 from cleo.helpers import argument
-
 from cleo.io.io import IO
-
 from poetry.console.commands.init import InitCommand
-
-
 from poetry.console.commands.installer_command import InstallerCommand
 
 
@@ -46,6 +42,7 @@ class TypesCommand(InitCommand, InstallerCommand):
             self._before_packages = []
 
         self._run_after = True
+        self._ignore_validation_errors = True
         return self.run(io)
 
     def handle(self) -> int:
