@@ -1,11 +1,11 @@
 [tool.poetry]
 name = "poetry-types"
-version = "0.2.1"
+version = "0.2.2"
 description = "A poetry plugin that automatically adds type subs as dependencies like the mypy --install-types command."
-authors = ["kreyoo <zunder325@gmail.com>"]
+authors = ["Jan Vollmer <zunder325@gmail.com>"]
 license = "MIT License"
 readme="README.md"
-repository="https://github.com/kreyoo/poetry-types"
+repository="https://github.com/jvllmr/poetry-types"
 classifiers=[
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
