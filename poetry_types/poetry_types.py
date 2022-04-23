@@ -1,15 +1,11 @@
-
-
-from poetry.console.commands.remove import RemoveCommand
-from poetry.plugins import ApplicationPlugin
-from poetry.console.application import Application
-
-from poetry.console.commands.update import UpdateCommand
-from poetry.console.commands.add import AddCommand
-
-from cleo.events.console_events import TERMINATE
 from cleo.events.console_command_event import ConsoleCommandEvent
-from cleo.io.io import IO
+from cleo.events.console_events import TERMINATE
+from poetry.console.application import Application
+from poetry.console.commands.add import AddCommand
+from poetry.console.commands.remove import RemoveCommand
+from poetry.console.commands.update import UpdateCommand
+from poetry.plugins import ApplicationPlugin
+
 from poetry_types.commands import (
     AddTypesCommand,
     RemoveTypesCommand,
@@ -26,9 +22,9 @@ class PoetryTypes(ApplicationPlugin):
 
     def onCommand(self, event: ConsoleCommandEvent, *_):
         command = event.command
-        
+
         io = event.io
-        
+
         io.write_line("")
 
         if isinstance(command, UpdateCommand):
@@ -37,6 +33,3 @@ class PoetryTypes(ApplicationPlugin):
             AddTypesCommand().run_after(io, command)
         elif isinstance(command, RemoveCommand):
             RemoveTypesCommand().run_after(io, command)
-
-
-       

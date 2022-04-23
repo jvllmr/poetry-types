@@ -1,9 +1,10 @@
-from cleo.io.inputs.argv_input import ArgvInput
-
-from colorama import Fore, Style
-from cleo.io.outputs.output import Verbosity
-from poetry.console.commands.add import AddCommand
 import sys
+
+from cleo.io.inputs.argv_input import ArgvInput
+from cleo.io.outputs.output import Verbosity
+from colorama import Fore, Style
+from poetry.console.commands.add import AddCommand
+
 from poetry_types.commands.base import TypesCommand
 
 
@@ -29,8 +30,10 @@ class AddTypesCommand(TypesCommand):
         cmd.set_installer(self.installer)
         cmd.set_env(self.env)
         cmd.set_poetry(self.poetry)
+
         cmd.run(io)
         io.set_verbosity(Verbosity.NORMAL)
+
         if self._run_after:
             installed_packages = list(
                 filter(
@@ -44,7 +47,7 @@ class AddTypesCommand(TypesCommand):
             )
             if installed_packages:
                 io.write_line(
-                    f"\r{Style.BRIGHT}Installed the following new type stubs{Style.RESET_ALL}:"
+                    f"\r{Style.BRIGHT}Installed the following new type stubs{Style.RESET_ALL}:"  # noqa
                     + 20 * " "
                 )
                 io.write_line("")
