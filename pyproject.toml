@@ -19,16 +19,15 @@ classifiers=[
 
 [tool.poetry.dependencies]
 python = "^3.7"
-poetry = {version = "^1.2.0b1", allow-prereleases = true}
+poetry = {version = "^1.2.0b3", allow-prereleases = true}
 colorama = "^0.4.4"
 
 
 
 
 [tool.poetry.group.dev.dependencies]
-black = {version = "^21.11-beta.1", allow-prereleases = true}
-pytest = "^6.2.5"
-flake8 = "^4.0.1"
+pytest = "^7.0"
+wheel = "0.37.1" # I still don't get why wheel is not shipped with pip or standard python, anyway, this is needed because the ne version of poetry would fail without it
 tox = "^3.25.0"
 tox-poetry = "^0.4.1"
 
@@ -36,6 +35,8 @@ tox-poetry = "^0.4.1"
 
 [tool.isort]
 profile= "black"
+
+
 
 
 

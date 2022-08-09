@@ -1,11 +1,11 @@
 [tool.poetry]
 name = "poetry-types"
-version = "0.2.1"
+version = "0.2.2"
 description = "A poetry plugin that automatically adds type subs as dependencies like the mypy --install-types command."
-authors = ["kreyoo <zunder325@gmail.com>"]
+authors = ["Jan Vollmer <zunder325@gmail.com>"]
 license = "MIT License"
 readme="README.md"
-repository="https://github.com/kreyoo/poetry-types"
+repository="https://github.com/jvllmr/poetry-types"
 classifiers=[
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
@@ -19,21 +19,22 @@ classifiers=[
 
 [tool.poetry.dependencies]
 python = "^3.7"
-poetry = {version = "^1.2.0b1", allow-prereleases = true}
+poetry = {version = "^1.2.0b3", allow-prereleases = true}
 colorama = "^0.4.4"
 
 
 
 
 [tool.poetry.group.dev.dependencies]
-black = {version = "^21.11-beta.1", allow-prereleases = true}
-pytest = "^6.2.5"
-flake8 = "^4.0.1"
+pytest = "^7.0"
+wheel = "0.37.1" # I still don't get why wheel is not shipped with pip or standard python, anyway, this is needed because the ne version of poetry would fail without it
 tox = "^3.25.0"
 tox-poetry = "^0.4.1"
-mypy = "^0.942"
 
 
+
+[tool.isort]
+profile= "black"
 
 
 
@@ -49,12 +50,16 @@ poetry-types = "poetry_types.poetry_types:PoetryTypes"
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.pytest.ini_options]
+testpaths = ["tests"]
 
 [tool.tox]
 legacy_tox_ini = """
 [tox]
 envlist= py37,py38, py39, py310
+
 [testenv]
 commands =
     pytest
+
 """
