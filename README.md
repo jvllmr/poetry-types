@@ -10,4 +10,4 @@ Additionally, there are commands you can use to trigger this plugins behaviour:
 
 ## Installation
 
-Run `poetry plugin add poetry-types` for global install or run `poetry add poetry-types` to use this plugin with your project.
+Run `poetry plugin add poetry-types` for global install or run `poetry add -D poetry-types` to use this plugin with your project.
