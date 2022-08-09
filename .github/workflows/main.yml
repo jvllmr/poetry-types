@@ -30,9 +30,6 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install poetry==1.2.0b3
           python -m poetry install
-      - name: Linting
-        run: |
-          python -m poetry run flake8
-      - name: Testing
+      - name: Test
         run: |
           python -m poetry run pytest
