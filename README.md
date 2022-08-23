@@ -1,3 +1,4 @@
+# This plugin does not work with poetry 1.2.0rc1 and later
 # poetry-types
 
 This is a plugin to poetry for the upcoming poetry 1.2 plugin feature.

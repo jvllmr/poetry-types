@@ -2,7 +2,7 @@
 name = "poetry-types"
 version = "0.2.2"
 description = "A poetry plugin that automatically adds type subs as dependencies like the mypy --install-types command."
-authors = ["Jan Vollmer <zunder325@gmail.com>"]
+authors = ["Jan Vollmer <jan@vllmr.dev>"]
 license = "MIT License"
 readme="README.md"
 repository="https://github.com/jvllmr/poetry-types"
@@ -19,7 +19,7 @@ classifiers=[
 
 [tool.poetry.dependencies]
 python = "^3.7"
-poetry = {version = "^1.2.0b3", allow-prereleases = true}
+poetry = {version = "^1.2.0rc1", allow-prereleases = true}
 colorama = "^0.4.4"
 
 

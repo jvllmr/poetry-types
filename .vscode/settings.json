@@ -1,0 +1,9 @@
+{
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+    "python.languageServer": "Pylance",
+    "python.linting.flake8CategorySeverity.E": "Warning",
+    "python.linting.flake8CategorySeverity.F": "Warning",
+    "python.linting.flake8Enabled": true,
+    "python.terminal.activateEnvInCurrentTerminal": true
+}
