@@ -1,0 +1,8 @@
+- id: poetry-types
+  name: "Adding/Removing type stub packages"
+  description: "Add/Remove type stubs to your poetry project."
+  entry: poetry types update
+  pass_filenames: false
+  language: python
+  files: pyproject\.toml|poetry\.lock
+  require_serial: true

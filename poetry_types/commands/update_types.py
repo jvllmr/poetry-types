@@ -1,68 +1,83 @@
 from __future__ import annotations
 
-import sys
+from cleo.helpers import argument
 
-from cleo.io.inputs.argv_input import ArgvInput
-
-from poetry_types.commands.add_types import AddTypesCommand
-from poetry_types.commands.base import TypesCommand
-from poetry_types.commands.remove_types import RemoveTypesCommand
+from poetry_types.commands.base import GROUP_NAME, TypesCommand
 
 
 class UpdateTypesCommand(TypesCommand):
     name = "types update"
 
-    arguments = []
+    description = "Adds/Removes type stubs according to pyproject.toml."
+
+    arguments = [
+        argument(
+            "packages",
+            "The packages to update the type stubs for.",
+            multiple=True,
+            optional=True,
+        )
+    ]
+
+    help = "<c1>types update</c1> adds/removes type stubs for every dependency in the project"
+
+    def collect_all_packages(self) -> dict[str, str]:
+        poetry_content = self.pyproject_poetry_content()
+        packages = {}
+        if "dependencies" in poetry_content:
+            packages.update(poetry_content["dependencies"])
+
+        if "group" in poetry_content:
+            for group in poetry_content["group"]:
+                if group == GROUP_NAME:
+                    continue
+                group_content = poetry_content["group"][group]
+                if "dependencies" in group_content:
+                    packages.update(group_content["dependencies"])
+
+        return packages
 
     def handle(self):
-        content = self.poetry.file.read()
-        poetry_content = content["tool"]["poetry"]
-        deps = poetry_content["dependencies"].keys()
-        try:
-            type_deps = poetry_content["group"]["types"]["dependencies"].keys()
-        except KeyError:
-            type_deps = []
+        packages = self.argument("packages")
 
-        to_be_installed = self.find_packages(
-            filter(
-                lambda dep: dep.lower()
-                not in map(
-                    lambda s: s[6:].lower(),
-                    filter(lambda s: s.startswith("types-"), type_deps),
-                ),
-                deps,
+        whitelist = {}
+        self.fix_names()
+        all_packages = set(
+            self.find_packages(
+                self.convert_to_type_packages_names(self.collect_all_packages())
             )
         )
-        to_be_removed = list(
-            map(
-                lambda s: "types-" + s,
-                filter(
-                    lambda s: s not in map(lambda dep: dep.lower(), deps),
-                    map(
-                        lambda s: s[6:].lower(),
-                        filter(lambda s: s.startswith("types-"), type_deps),
-                    ),
-                ),
+
+        exisiting_packages = set(self.find_packages(self.get_existing_type_packages()))
+
+        to_add = all_packages.difference(exisiting_packages)
+        to_remove = exisiting_packages.difference(all_packages)
+
+        if to_add:
+            requirements = self.install_packages(to_add, True)
+            whitelist.update(
+                {
+                    requirement["name"]: requirement["version"]
+                    for requirement in requirements
+                }
             )
-        )
-        io = self.io
+        if to_remove:
+            whitelist.update(self.remove_packages(to_remove, True))
 
-        if to_be_installed:
-            new_argv = (
-                sys.argv[:2] + to_be_installed
-                if not self.io.input.has_argument("packages")
-                else self.find_packages(self.argument("packages"))
+        if packages:
+            whitelist.update(
+                {name: "*" for name in self.convert_to_type_packages_names(packages)}
             )
-            io.set_input(ArgvInput(new_argv))
 
-            AddTypesCommand().run_after(io, self)
+        self.installer.whitelist(whitelist)
 
-        if to_be_removed:
-            new_argv = (
-                sys.argv[:2] + to_be_removed
-                if not self.io.input.has_argument("packages")
-                else self.find_packages(self.argument("packages"))
-            )
-            io.set_input(ArgvInput(new_argv))
+        self.installer.only_groups([GROUP_NAME])
 
-            RemoveTypesCommand().run_after(io, self)
+        self.installer.update(True)
+
+        status = self.installer.run()
+
+        if status == 0 and to_add:
+            self.add_constraints_to_toml(requirements)
+
+        return status

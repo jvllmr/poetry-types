@@ -1,13 +1,18 @@
-# This plugin does not work with poetry 1.2.0rc1 and later
+
 # poetry-types
 
 This is a plugin to poetry for the upcoming poetry 1.2 plugin feature.
-It automatically installs/removes typing stubs when adding, removing or updating packages via commands.
-Additionally, there are commands you can use to trigger this plugins behaviour:
+It installs/removes/updates typing stubs via following commands:
 
 - `poetry types add <package names>`
 - `poetry types remove <package names>`
-- `poetry types update`
+- `poetry types update <package names>`
+
+## Usage examples
+
+- `poetry types add SQLAlchemy` adds `types-SQLAlchemy` to your project
+- `poetry types update` adds `types-SQLAlchemy` if `SQLAlchemy` is present, but not `types-SQLAlchemy
+- `poetry types update` removes `types-SQLAlchemy` if `types-SQLAlchemy` is present, but not `SQLAlchemy`
 
 ## Installation
 
