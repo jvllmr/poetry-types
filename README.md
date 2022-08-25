@@ -11,7 +11,7 @@ It installs/removes/updates typing stubs via following commands:
 ## Usage examples
 
 - `poetry types add SQLAlchemy` adds `types-SQLAlchemy` to your project
-- `poetry types update` adds `types-SQLAlchemy` if `SQLAlchemy` is present, but not `types-SQLAlchemy
+- `poetry types update` adds `types-SQLAlchemy` if `SQLAlchemy` is present, but not `types-SQLAlchemy`
 - `poetry types update` removes `types-SQLAlchemy` if `types-SQLAlchemy` is present, but not `SQLAlchemy`
 
 ## Installation
