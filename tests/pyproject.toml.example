@@ -19,7 +19,7 @@ classifiers=[
 
 [tool.poetry.dependencies]
 python = "^3.7"
-poetry = {version = "^1.2.0rc1", allow-prereleases = true}
+poetry = "^1.2"
 colorama = "^0.4.4"
 
 
