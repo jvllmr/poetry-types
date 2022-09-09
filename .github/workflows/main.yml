@@ -1,15 +1,15 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
-
 name: Routine Checks
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
   schedule:
     - cron: "0 0 * * *"
+
+env:
+  PIP_CACHE_DIR: pip_cache
 
 jobs:
   Test:
@@ -18,18 +18,26 @@ jobs:
       fail-fast: false
       matrix:
         python-version: [3.7, 3.8, 3.9, "3.10"]
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Cache wheels
+        id: cache_wheels
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.PIP_CACHE_DIR }}
+          key: ${{ matrix.os }}${{ matrix.python-version }}
+      - name: Set up poetry
+        uses: abatilo/actions-poetry@v2
+        with:
+          poetry-version: 1.2.0
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install poetry>=1.2.0
-          python -m poetry install
-      - name: Test
-        run: |
-          python -m poetry run pytest
+        run: poetry install
+      - name: Testing
+        run: poetry run pytest
+      - name: Building
+        run: poetry build
