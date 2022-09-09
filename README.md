@@ -1,6 +1,13 @@
 
 # poetry-types
+[![PyPI version](https://badge.fury.io/py/pyaphid.svg)](https://badge.fury.io/py/poetry-types)
+[![GitHub license](https://img.shields.io/github/license/jvllmr/poetry-types)](https://github.com/jvllmr/poetry-types/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/jvllmr/poetry-types)](https://github.com/jvllmr/poetry-types/issues)
+![PyPI - Downloads](https://img.shields.io/pypi/dd/poetry-types)
+![Tests](https://github.com/jvllmr/poetry-types/actions/workflows/main.yml/badge.svg)
 
+
+## Description
 This is a plugin to poetry for the upcoming poetry 1.2 plugin feature.
 It installs/removes/updates typing stubs via following commands:
 
