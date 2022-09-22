@@ -68,7 +68,7 @@ jobs:
           poetry-version: ${{ matrix.poetry-version }}
       - name: Before Add
         run: poetry --version
-      - name: Testing
+      - name: Add
         run: poetry self add poetry-types
-      - name: Building
+      - name: After add
         run: poetry --version
