@@ -636,7 +636,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 name = "toml"
 version = "0.10.2"
 description = "Python Library for Tom's Obvious, Minimal Language"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
@@ -787,7 +787,7 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=6)", "pytest-black (>=
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "0982058566c791c86239cfcbcedf559a7e9af87d72c40819343429f0bcd31726"
+content-hash = "58113bdafb3ae9075f7caea8a7962deb8a7aea4a14520cf6783b6e564123334c"
 
 [metadata.files]
 attrs = [

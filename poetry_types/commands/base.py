@@ -5,7 +5,6 @@ import typing as t
 
 import poetry.core.semver.helpers as semver
 import poetry.factory as poetry_factory
-import toml
 import tomlkit
 from packaging.utils import canonicalize_name
 from poetry.console.commands.init import InitCommand
@@ -28,7 +27,7 @@ class TypesCommand(InitCommand, InstallerCommand):
         poetry_content = content["tool"]["poetry"]
 
         if "group" not in poetry_content:
-            poetry_content["group"] = toml.table(is_super_table=True)
+            poetry_content["group"] = tomlkit.table(is_super_table=True)
 
         groups = poetry_content["group"]
 
@@ -40,7 +39,7 @@ class TypesCommand(InitCommand, InstallerCommand):
             poetry_content["group"][GROUP_NAME] = group_table
 
         if "dependencies" not in poetry_content["group"][GROUP_NAME]:
-            poetry_content["group"][GROUP_NAME]["dependencies"] = toml.table()
+            poetry_content["group"][GROUP_NAME]["dependencies"] = tomlkit.table()
         self.poetry.file.write(content)
         return poetry_content["group"][GROUP_NAME]["dependencies"]
 
