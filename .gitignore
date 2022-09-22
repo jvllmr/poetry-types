@@ -1,5 +1,5 @@
 __pycache__
 dist
 .venv
-tests/poetry.lock
-tests/*.toml
+tests/*.lock
+tests/pyproject.toml

@@ -394,6 +394,14 @@ python-versions = "*"
 ptyprocess = ">=0.5"
 
 [[package]]
+name = "pip"
+version = "22.2.2"
+description = "The PyPA recommended tool for installing Python packages."
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
 name = "pkginfo"
 version = "1.8.3"
 description = "Query metadatdata from sdists / bdists / installed packages."
@@ -787,7 +795,7 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=6)", "pytest-black (>=
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "e85dcf29ade1e7e6cbf94ffe913e75d1e6ae1d3a75828c85023976c5e7df4c94"
+content-hash = "2b5728698a429650f7a5c9a943e3d22b5fbf4723a52cbf2c32eb396dd338bbf9"
 
 [metadata.files]
 attrs = [
@@ -1103,6 +1111,10 @@ pathspec = [
 pexpect = [
     {file = "pexpect-4.8.0-py2.py3-none-any.whl", hash = "sha256:0b48a55dcb3c05f3329815901ea4fc1537514d6ba867a152b581d69ae3710937"},
     {file = "pexpect-4.8.0.tar.gz", hash = "sha256:fc65a43959d153d0114afe13997d439c22823a27cefceb5ff35c2178c6784c0c"},
+]
+pip = [
+    {file = "pip-22.2.2-py3-none-any.whl", hash = "sha256:b61a374b5bc40a6e982426aede40c9b5a08ff20e640f5b56977f4f91fed1e39a"},
+    {file = "pip-22.2.2.tar.gz", hash = "sha256:3fd1929db052f056d7a998439176d3333fa1b3f6c1ad881de1885c0717608a4b"},
 ]
 pkginfo = [
     {file = "pkginfo-1.8.3-py2.py3-none-any.whl", hash = "sha256:848865108ec99d4901b2f7e84058b6e7660aae8ae10164e015a6dcf5b242a594"},

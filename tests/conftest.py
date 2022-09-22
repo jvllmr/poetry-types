@@ -1,5 +1,6 @@
 import os
 import shutil
+import subprocess
 
 from pytest import fixture
 from tomlkit import TOMLDocument
@@ -14,12 +15,16 @@ def prepare_tests():
 @fixture(autouse=True)
 def yield_example():
     shutil.copy2("pyproject.toml.example", "pyproject.toml")
-    yield
-    os.remove("pyproject.toml")
     try:
         os.remove("poetry.lock")
     except FileNotFoundError:
         pass
+    subprocess.run(["poetry", "install"])
+    yield
+    subprocess.run(
+        ["python", "-m", "poetry", "remove", "--group", "types", "types-requests"]
+    )
+    # os.remove("pyproject.toml")
 
 
 class CustomTOMLFile(TOMLFile):
