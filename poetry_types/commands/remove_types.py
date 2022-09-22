@@ -21,7 +21,7 @@ class RemoveTypesCommand(TypesCommand, RemoveCommand):
 
     def handle(self) -> int:
         packages = self.argument("packages")
-        self.fix_names()
+        self.sanitize_types_section()
         packages = set(
             self.find_packages(self.convert_to_type_packages_names(packages))
         )

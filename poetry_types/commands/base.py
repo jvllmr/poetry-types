@@ -12,6 +12,9 @@ from poetry.console.commands.installer_command import InstallerCommand
 
 from poetry_types.packages_map import PACKAGES_MAP
 
+if t.TYPE_CHECKING:
+    import tomlkit.items as tomlkit_items
+
 GROUP_NAME = "types"
 
 
@@ -22,26 +25,49 @@ class TypesCommand(InitCommand, InstallerCommand):
     def pyproject_poetry_content(self):
         return self.pyproject_content()["tool"]["poetry"]
 
-    def get_types_section(self):
+    @t.overload
+    def get_types_section(
+        self, create_if_not_exists: t.Literal[False]
+    ) -> tomlkit_items.Table | None:
+        ...
+
+    @t.overload
+    def get_types_section(self) -> tomlkit_items.Table:
+        ...
+
+    @t.overload
+    def get_types_section(
+        self, create_if_not_exists: t.Literal[True]
+    ) -> tomlkit_items.Table:
+        ...
+
+    def get_types_section(
+        self, create_if_not_exists: bool = True
+    ) -> tomlkit_items.Table:
         content = self.pyproject_content()
-        poetry_content = content["tool"]["poetry"]
 
-        if "group" not in poetry_content:
-            poetry_content["group"] = tomlkit.table(is_super_table=True)
+        try:
+            return content["tool"]["poetry"]["group"][GROUP_NAME]["dependencies"]
+        except KeyError:
+            if create_if_not_exists:
+                return self.create_types_section()
+            return None
 
-        groups = poetry_content["group"]
+    def create_types_section(self):
+        content = self.pyproject_content()
 
-        if GROUP_NAME not in groups:
-            dependencies_toml: dict[str, t.Any] = tomlkit.parse(
-                f"[tool.poetry.group.{GROUP_NAME}.dependencies]\n\n"
-            )
-            group_table = dependencies_toml["tool"]["poetry"]["group"][GROUP_NAME]
-            poetry_content["group"][GROUP_NAME] = group_table
-
-        if "dependencies" not in poetry_content["group"][GROUP_NAME]:
-            poetry_content["group"][GROUP_NAME]["dependencies"] = tomlkit.table()
+        path = ("tool", "poetry", "group", GROUP_NAME, "dependencies")
+        section = content
+        for n, key in enumerate(path):
+            if key not in section:
+                section[key] = (
+                    tomlkit.table(is_super_table=True)
+                    if n < len(path) - 1
+                    else tomlkit.table()
+                )
+            section = section[key]
         self.poetry.file.write(content)
-        return poetry_content["group"][GROUP_NAME]["dependencies"]
+        return section
 
     def convert_to_type_packages_names(self, packages: list[str]):
         return [
@@ -57,24 +83,29 @@ class TypesCommand(InitCommand, InstallerCommand):
         self, packages: list[str] | None = None, canonicalized=False
     ):
         """Filter type packages in pyproject.toml by names"""
+        types_section = self.get_types_section(False)
 
+        if types_section is None:
+            return []
         if packages:
             return [
                 package if not canonicalized else canonicalize_name(package)
                 for package in packages
-                for key in self.get_types_section()
+                for key in types_section
                 if canonicalize_name(key) == canonicalize_name(package)
             ]
 
         return [
             package if not canonicalized else canonicalize_name(package)
-            for package in self.get_types_section()
+            for package in types_section
         ]
 
     def add_constraints_to_toml(self, constraints: list[dict[str, str]]):
+
+        types_section = self.get_types_section()
+
         content = self.pyproject_content()
         poetry_content = content["tool"]["poetry"]
-        types_section = self.get_types_section()
 
         for constraint in constraints:
             name = constraint["name"]
@@ -89,6 +120,10 @@ class TypesCommand(InitCommand, InstallerCommand):
         content = self.pyproject_content()
         poetry_content = content["tool"]["poetry"]
         types_section = self.get_types_section()
+
+        if types_section is None:
+            return {}
+
         removed: dict[str, str] = {}
         for package in packages:
             removed[package] = types_section[package]
@@ -111,8 +146,9 @@ class TypesCommand(InitCommand, InstallerCommand):
         return found_packages
 
     def install_packages(self, packages: list[str], prepare_only=False):
-        content = self.pyproject_content()
         section = self.get_types_section()
+
+        content = self.pyproject_content()
 
         packages = self.find_packages(packages)
 
@@ -189,21 +225,23 @@ class TypesCommand(InitCommand, InstallerCommand):
 
         return self.installer.run()
 
-    def fix_names(self):
-        types_section = self.get_types_section()
+    def sanitize_types_section(self):
+        types_section = self.get_types_section(False)
+
+        if types_section is None:
+            return
+
         content = self.pyproject_content()
-        delete = []
+
         for package in types_section.copy():
             new_names = self.find_packages([package])
             version = types_section[package]
 
             if new_names and new_names[0] != package:
                 types_section[new_names[0]] = version
-            else:
-                delete.append(package)
-
-        for package in delete:
-            del types_section[package]
+                del types_section[package]
+            elif not new_names:
+                del types_section[package]
 
         content["tool"]["poetry"]["group"][GROUP_NAME]["dependencies"] = types_section
         self.poetry.file.write(content)

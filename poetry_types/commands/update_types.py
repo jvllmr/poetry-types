@@ -41,7 +41,7 @@ class UpdateTypesCommand(TypesCommand):
         packages = self.argument("packages")
 
         whitelist = {}
-        self.fix_names()
+        self.sanitize_types_section()
         all_packages = set(
             self.find_packages(
                 self.convert_to_type_packages_names(self.collect_all_packages())

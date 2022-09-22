@@ -19,7 +19,7 @@ class AddTypesCommand(TypesCommand):
     )
 
     def handle(self) -> int:
-        self.fix_names()
+        self.sanitize_types_section()
         packages = self.argument("packages")
         packages = self.find_packages(self.convert_to_type_packages_names(packages))
         existing_packages = self.get_existing_type_packages(packages)
