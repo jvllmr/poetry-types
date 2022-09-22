@@ -30,6 +30,26 @@ tox = "^3.25.0"
 tox-poetry = "^0.4.1"
 black = "^22.6.0"
 
+[tool.pyaphid]
+forbidden = [
+    "print"
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
