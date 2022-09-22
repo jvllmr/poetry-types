@@ -23,4 +23,4 @@ It installs/removes/updates typing stubs via following commands:
 
 ## Installation
 
-Run `poetry plugin add poetry-types` for global install or run `poetry add -D poetry-types` to use this plugin with your project.
+Run `poetry self add poetry-types` for global install or run `poetry add -D poetry-types` to use this plugin with your project.
