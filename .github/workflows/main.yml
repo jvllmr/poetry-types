@@ -72,3 +72,5 @@ jobs:
         run: poetry self add poetry-types
       - name: After add
         run: poetry --version
+      - name: Update types
+        run: poetry types update
