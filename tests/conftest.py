@@ -16,6 +16,10 @@ def yield_example():
     shutil.copy2("pyproject.toml.example", "pyproject.toml")
     yield
     os.remove("pyproject.toml")
+    try:
+        os.remove("poetry.lock")
+    except FileNotFoundError:
+        pass
 
 
 class CustomTOMLFile(TOMLFile):
