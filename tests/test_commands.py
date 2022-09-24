@@ -4,7 +4,7 @@ import subprocess
 
 import pytest
 
-from conftest import CustomTOMLFile
+from .conftest import CustomTOMLFile
 
 
 @pytest.mark.parametrize("command", [["types", "update"]])
