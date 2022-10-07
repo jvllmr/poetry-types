@@ -33,3 +33,10 @@ Run `poetry self add poetry-types` for global install or run `poetry add -D poet
   hooks:
     - id: poetry-types
 ```
+### poetry-types has to be skipped with pre-commit.ci
+```yaml
+ci:
+  skip: [poetry-types]
+```
+
+
