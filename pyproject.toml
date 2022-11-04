@@ -20,7 +20,7 @@ packaging = "^21.3"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.0"
-wheel = "0.37.1" # I still don't get why wheel is not shipped with pip or standard python, anyway, this is needed because the ne version of poetry would fail without it
+wheel = "0.38.1" # I still don't get why wheel is not shipped with pip or standard python, anyway, this is needed because the ne version of poetry would fail without it
 tox = "^3.25.0"
 tox-poetry = "^0.4.1"
 black = "^22.6.0"
