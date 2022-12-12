@@ -214,7 +214,8 @@ class TypesCommand(InitCommand, InstallerCommand):
     def installer_action(self, packages: list[str]):
         self.poetry.set_locker(
             self.poetry.locker.__class__(
-                self.poetry.locker.lock.path, self.pyproject_poetry_content()
+                self.poetry.locker.lock.absolute().as_posix(),
+                self.pyproject_poetry_content(),
             )
         )
         self.installer.set_locker(self.poetry.locker)

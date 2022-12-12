@@ -22,22 +22,13 @@ python = "^3.7"
 poetry = "^1.2"
 colorama = "^0.4.4"
 
-
-
-
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.0"
 tox = "^3.25.0"
 tox-poetry = "^0.4.1"
 
-
-
 [tool.isort]
 profile= "black"
-
-
-
-
 
 [tool.poetry.group.types.dependencies]
 types-colorama = "^0.4.6"
