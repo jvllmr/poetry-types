@@ -34,6 +34,7 @@ repos:
     rev: v3.0.0-alpha.4
     hooks:
       - id: prettier
+        additional_dependencies: [prettier@latest, prettier-plugin-toml@latest]
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
     hooks:

@@ -4,13 +4,13 @@ version = "0.3.4"
 description = "A poetry plugin that adds/removes type stubs as dependencies like the mypy --install-types command."
 authors = ["Jan Vollmer <jan@vllmr.dev>"]
 license = "MIT License"
-readme="README.md"
-repository="https://github.com/jvllmr/poetry-types"
-classifiers=[
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
-        "Natural Language :: English",
-    ]
+readme = "README.md"
+repository = "https://github.com/jvllmr/poetry-types"
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Natural Language :: English",
+]
 
 [tool.poetry.dependencies]
 python = "^3.7"
@@ -25,20 +25,11 @@ tox-poetry = "^0.4.1"
 black = "^22.6.0"
 pip = "^22.2.2"
 
-
-
-
-
-
-
 [tool.pyaphid]
-forbidden = [
-    "print"
-]
-
+forbidden = ["print"]
 
 [tool.isort]
-profile= "black"
+profile = "black"
 
 [tool.poetry.plugins."poetry.application.plugin"]
 poetry-types = "poetry_types.poetry_types:PoetryTypes"
