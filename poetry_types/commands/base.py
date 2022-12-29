@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import contextlib
+import functools
 import typing as t
 
 import poetry.core.semver.helpers as semver
@@ -69,6 +70,9 @@ class TypesCommand(InitCommand, InstallerCommand):
         self.poetry.file.write(content)
         return section
 
+    def is_package_type_package_name(self, package: str):
+        return package.startswith("types-") or package in PACKAGES_MAP.values()
+
     def convert_to_type_packages_names(self, packages: list[str]):
         return [
             package
@@ -82,7 +86,7 @@ class TypesCommand(InitCommand, InstallerCommand):
     def get_existing_type_packages(
         self, packages: list[str] | None = None, canonicalized=False
     ):
-        """Filter type packages in pyproject.toml by names"""
+        """Filter packages in type section in pyproject.toml by names"""
         types_section = self.get_types_section(False)
 
         if types_section is None:
@@ -136,13 +140,19 @@ class TypesCommand(InitCommand, InstallerCommand):
         self.poetry.file.write(content)
         return removed
 
+    @functools.cache
+    def find_package(self, package: str):
+        try:
+            return self._find_best_version_for_package(package)[0]
+        except ValueError:
+            return None
+
     def find_packages(self, packages: list[str]):
         found_packages = []
         for package in packages:
-            try:
-                found_packages.append(self._find_best_version_for_package(package)[0])
-            except ValueError:
-                pass
+            found_package = self.find_package(package)
+            if found_package is not None:
+                found_packages.append(found_package)
         return found_packages
 
     def install_packages(self, packages: list[str], prepare_only=False):

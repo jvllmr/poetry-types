@@ -21,7 +21,7 @@ class UpdateTypesCommand(TypesCommand):
 
     help = "<c1>types update</c1> adds/removes type stubs for every dependency in the project"
 
-    def collect_all_packages(self) -> dict[str, str]:
+    def collect_all_packages_not_in_types_section(self) -> dict[str, str]:
         poetry_content = self.pyproject_poetry_content()
         packages = {}
         if "dependencies" in poetry_content:
@@ -42,16 +42,23 @@ class UpdateTypesCommand(TypesCommand):
 
         whitelist = {}
         self.sanitize_types_section()
-        all_packages = set(
+        all_packages_not_in_types_section = (
+            self.collect_all_packages_not_in_types_section()
+        )
+        pypi_type_packages = set(
             self.find_packages(
-                self.convert_to_type_packages_names(self.collect_all_packages())
+                self.convert_to_type_packages_names(all_packages_not_in_types_section)
             )
         )
+        type_section_packages = set(self.get_existing_type_packages())
 
-        exisiting_packages = set(self.find_packages(self.get_existing_type_packages()))
+        to_add = pypi_type_packages.difference(type_section_packages)
 
-        to_add = all_packages.difference(exisiting_packages)
-        to_remove = exisiting_packages.difference(all_packages)
+        to_remove = {
+            package
+            for package in type_section_packages.difference(pypi_type_packages)
+            if self.is_package_type_package_name(package)
+        }
 
         if to_add:
             requirements = self.install_packages(to_add, True)

@@ -29,7 +29,9 @@ def test_update(command: list[str], toml_file: CustomTOMLFile):
     toml_file.write_poetry(content)
     subprocess.run(["python", "-m", "poetry", "--verbose", *command])
     assert "types-colorama" not in toml_file.poetry["group"]["types"]["dependencies"]
+    assert "types-sqlalchemy" not in toml_file.poetry["group"]["types"]["dependencies"]
     assert "types-requests" in toml_file.poetry["group"]["types"]["dependencies"]
+    assert "xlsxwriter" in toml_file.poetry["group"]["types"]["dependencies"]
 
     assert (
         subprocess.run(
@@ -56,6 +58,8 @@ def test_add(command: list[str], toml_file: CustomTOMLFile):
 
     subprocess.run(["python", "-m", "poetry", "--verbose", *command])
     assert "types-requests" in toml_file.poetry["group"]["types"]["dependencies"]
+    assert "xlsxwriter" in toml_file.poetry["group"]["types"]["dependencies"]
+
     assert (
         subprocess.run(
             ["python", "-m", "poetry", "run", "pip", "show", "types-requests"]
@@ -75,6 +79,8 @@ def test_remove(command: list[str], toml_file: CustomTOMLFile):
 
     subprocess.run(["python", "-m", "poetry", "--verbose", *command])
     assert "types-colorama" not in toml_file.poetry["group"]["types"]["dependencies"]
+    assert "xlsxwriter" in toml_file.poetry["group"]["types"]["dependencies"]
+
     assert (
         subprocess.run(
             ["python", "-m", "poetry", "run", "pip", "show", "types-colorama"]

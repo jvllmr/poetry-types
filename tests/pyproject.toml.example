@@ -33,6 +33,7 @@ profile= "black"
 [tool.poetry.group.types.dependencies]
 types-colorama = "^0.4.6"
 types-sqlalchemy = "^1.4"
+xlsxwriter = "*"
 
 [tool.poetry.plugins."poetry.application.plugin"]
 poetry-types = "poetry_types.poetry_types:PoetryTypes"
