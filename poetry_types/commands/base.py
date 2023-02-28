@@ -105,7 +105,6 @@ class TypesCommand(InitCommand, InstallerCommand):
         ]
 
     def add_constraints_to_toml(self, constraints: list[dict[str, str]]):
-
         types_section = self.get_types_section()
 
         content = self.pyproject_content()
@@ -203,7 +202,6 @@ class TypesCommand(InitCommand, InstallerCommand):
             )
 
             if status == 0:
-
                 assert isinstance(content, tomlkit.TOMLDocument)
 
                 self.add_constraints_to_toml(requirements)
