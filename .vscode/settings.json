@@ -1,10 +1,13 @@
 {
-  "python.formatting.provider": "black",
+  "python.formatting.provider": "none",
   "editor.formatOnSave": true,
   "python.languageServer": "Pylance",
   "python.linting.flake8CategorySeverity.E": "Warning",
   "python.linting.flake8CategorySeverity.F": "Warning",
-  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Enabled": false,
   "python.terminal.activateEnvInCurrentTerminal": true,
-  "python.defaultInterpreterPath": ".venv/bin/python"
+  "python.defaultInterpreterPath": ".venv/bin/python",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  }
 }

@@ -222,7 +222,7 @@ class TypesCommand(InitCommand, InstallerCommand):
     def installer_action(self, packages: list[str]):
         self.poetry.set_locker(
             self.poetry.locker.__class__(
-                self.poetry.locker.lock.absolute().as_posix(),
+                self.poetry.locker.lock,
                 self.pyproject_poetry_content(),
             )
         )

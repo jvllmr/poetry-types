@@ -77,7 +77,7 @@ def test_remove(command: list[str], toml_file: CustomTOMLFile):
         == 0
     )
 
-    subprocess.run(["python", "-m", "poetry", "--verbose", *command])
+    subprocess.run(["python", "-m", "poetry", "-vvv", *command])
     assert "types-colorama" not in toml_file.poetry["group"]["types"]["dependencies"]
     assert "xlsxwriter" in toml_file.poetry["group"]["types"]["dependencies"]
 

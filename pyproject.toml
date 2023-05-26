@@ -14,8 +14,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.7"
-poetry = "^1.2"
-poetry-core = "<1.6.0"
+poetry = "^1.5"
 tomlkit = "^0.11.4"
 packaging = ">=21.3,<24.0"
 
@@ -23,6 +22,7 @@ packaging = ">=21.3,<24.0"
 pytest = "^7.0"
 tox = "^3.0 ||^4.0"
 black = "^22.6.0 || ^23.0.0"
+ruff = "^0.0.270"
 
 [tool.pyaphid]
 forbidden = ["print"]
