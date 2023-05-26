@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "poetry-types"
-version = "0.3.6"
+version = "0.3.7"
 description = "A poetry plugin that adds/removes type stubs as dependencies like the mypy --install-types command."
 authors = ["Jan Vollmer <jan@vllmr.dev>"]
 license = "MIT License"
