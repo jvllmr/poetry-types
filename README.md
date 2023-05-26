@@ -29,7 +29,7 @@ Run `poetry self add poetry-types` for global install or run `poetry add -D poet
 
 ```yaml
 - repo: https://github.com/jvllmr/poetry-types
-  rev: v0.3.5
+  rev: v0.4.0
   hooks:
     - id: poetry-types
 ```
