@@ -20,6 +20,7 @@ classifiers=[
 [tool.poetry.dependencies]
 python = "^3.7"
 poetry = "^1.2"
+poetry-core = "<1.6.0"
 colorama = "^0.4.4"
 
 [tool.poetry.group.dev.dependencies]

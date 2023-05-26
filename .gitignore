@@ -3,3 +3,4 @@ dist
 .venv
 tests/*.lock
 tests/pyproject.toml
+.tox
