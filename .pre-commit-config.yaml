@@ -1,12 +1,12 @@
 repos:
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.3.2
+    rev: v3.10.1
     hooks:
       - id: pyupgrade
         args:
           - --py37-plus
   - repo: https://github.com/hadialqattan/pycln
-    rev: v2.1.3
+    rev: v2.2.2
     hooks:
       - id: pycln
   - repo: https://github.com/PyCQA/isort
@@ -18,20 +18,20 @@ repos:
     hooks:
       - id: pyaphid
   - repo: https://github.com/psf/black
-    rev: 23.3.0
+    rev: 23.7.0
     hooks:
       - id: black
   - repo: https://github.com/asottile/yesqa
-    rev: v1.4.0
+    rev: v1.5.0
     hooks:
       - id: yesqa
   - repo: https://github.com/pycqa/flake8
-    rev: "6.0.0"
+    rev: "6.1.0"
     hooks:
       - id: flake8
         additional_dependencies: [Flake8-pyproject]
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.0.0-alpha.9-for-vscode
+    rev: v3.0.2
     hooks:
       - id: prettier
         additional_dependencies: [prettier@latest, prettier-plugin-toml@latest]
