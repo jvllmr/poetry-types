@@ -4,3 +4,5 @@ dist
 tests/*.lock
 tests/pyproject.toml
 .tox
+build
+*.egg-info
