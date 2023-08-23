@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "poetry-types"
-version = "0.4.0"
+version = "0.5.0"
 description = "A poetry plugin that adds/removes type stubs as dependencies like the mypy --install-types command."
 authors = ["Jan Vollmer <jan@vllmr.dev>"]
 license = "MIT License"
@@ -13,8 +13,8 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.7"
-poetry = "^1.5"
+python = "^3.8"
+poetry = "^1.6"
 tomlkit = "^0.11.4"
 packaging = ">=21.3,<24.0"
 
@@ -44,7 +44,7 @@ testpaths = ["tests"]
 legacy_tox_ini = """
 [tox]
 isolated_build = true
-envlist= py37,py38, py39, py310, py311
+envlist= py38, py39, py310, py311
 
 [testenv]
 deps =

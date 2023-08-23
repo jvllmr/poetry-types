@@ -4,7 +4,7 @@ import contextlib
 import functools
 import typing as t
 
-import poetry.core.semver.helpers as semver
+from poetry.core.constraints.version.parser import parse_constraint
 import poetry.factory as poetry_factory
 import tomlkit
 from packaging.utils import canonicalize_name
@@ -167,7 +167,7 @@ class TypesCommand(InitCommand, InstallerCommand):
             version = _constraint.get("version")
             if version is not None:
                 assert isinstance(version, str)
-                semver.parse_constraint(version)
+                parse_constraint(version)
 
             constraint: dict[str, t.Any] = tomlkit.inline_table()
             for name, value in _constraint.items():
