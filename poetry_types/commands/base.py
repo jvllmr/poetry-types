@@ -4,12 +4,12 @@ import contextlib
 import functools
 import typing as t
 
-from poetry.core.constraints.version.parser import parse_constraint
 import poetry.factory as poetry_factory
 import tomlkit
 from packaging.utils import canonicalize_name
 from poetry.console.commands.init import InitCommand
 from poetry.console.commands.installer_command import InstallerCommand
+from poetry.core.constraints.version.parser import parse_constraint
 
 from poetry_types.packages_map import PACKAGES_MAP
 
