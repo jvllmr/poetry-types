@@ -18,8 +18,8 @@ classifiers=[
     ]
 
 [tool.poetry.dependencies]
-python = "^3.7"
-poetry = "^1.5"
+python = "^3.8"
+poetry = "^1.6"
 colorama = "^0.4.4"
 
 [tool.poetry.group.dev.dependencies]
