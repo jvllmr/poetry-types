@@ -17,8 +17,8 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        python-version: [3.8, 3.9, "3.10", "3.11"]
-        poetry-version: [1.6.1]
+        python-version: [3.8, 3.9, "3.10", "3.11", "3.12"]
+        poetry-version: [1.6.1, 1.7.0]
         os: [ubuntu-latest, macos-latest]
     steps:
       - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
@@ -47,8 +47,8 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        python-version: [3.8, 3.9, "3.10", "3.11"]
-        poetry-version: [1.6.1]
+        python-version: [3.8, 3.9, "3.10", "3.11", "3.12"]
+        poetry-version: [1.6.1, 1.7.0]
         os: [ubuntu-latest, macos-latest]
     steps:
       - uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
