@@ -29,18 +29,15 @@ class TypesCommand(InitCommand, InstallerCommand):
     @t.overload
     def get_types_section(
         self, create_if_not_exists: t.Literal[False]
-    ) -> tomlkit_items.Table | None:
-        ...
+    ) -> tomlkit_items.Table | None: ...
 
     @t.overload
-    def get_types_section(self) -> tomlkit_items.Table:
-        ...
+    def get_types_section(self) -> tomlkit_items.Table: ...
 
     @t.overload
     def get_types_section(
         self, create_if_not_exists: t.Literal[True]
-    ) -> tomlkit_items.Table:
-        ...
+    ) -> tomlkit_items.Table: ...
 
     def get_types_section(
         self, create_if_not_exists: bool = True
@@ -75,11 +72,15 @@ class TypesCommand(InitCommand, InstallerCommand):
 
     def convert_to_type_packages_names(self, packages: list[str]):
         return [
-            package
-            if package.startswith("types-")
-            else f"types-{package}"
-            if package not in PACKAGES_MAP
-            else PACKAGES_MAP[package]
+            (
+                package
+                if package.startswith("types-")
+                else (
+                    f"types-{package}"
+                    if package not in PACKAGES_MAP
+                    else PACKAGES_MAP[package]
+                )
+            )
             for package in packages
         ]
 
