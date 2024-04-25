@@ -17,9 +17,9 @@ It installs/removes/updates typing stubs via following commands:
 
 ## Usage examples
 
-- `poetry types add SQLAlchemy` adds `types-SQLAlchemy` to your project
-- `poetry types update` adds `types-SQLAlchemy` if `SQLAlchemy` is present, but not `types-SQLAlchemy`
-- `poetry types update` removes `types-SQLAlchemy` if `types-SQLAlchemy` is present, but not `SQLAlchemy`
+- `poetry types add openpyxl` adds `openpyxl` to your project
+- `poetry types update` adds `types-openpyxl` if `openpyxl` is present, but `types-openpyxl` is not
+- `poetry types update` removes `types-openpyxl` if `types-openpyxl` is present, but `openpyxl` is not
 
 ## Installation
 
