@@ -23,9 +23,8 @@ poetry = "^1.6"
 colorama = "^0.4.4"
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^7.0"
-tox = "^3.25.0"
-tox-poetry = "^0.4.1"
+pytest = "^8.0"
+tox = "^4.0"
 
 [tool.isort]
 profile= "black"
