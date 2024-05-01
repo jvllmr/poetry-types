@@ -58,12 +58,17 @@ class TypesCommand(InitCommand, InstallerCommand):
         section = content
         for n, key in enumerate(path):
             if key not in section:
-                section[key] = (
+                new_table = (
                     tomlkit.table(is_super_table=True)
                     if n < len(path) - 1
                     else tomlkit.table()
                 )
+
+                section[key] = new_table
+                section.add(tomlkit.nl())
+
             section = section[key]
+
         self.poetry.file.write(content)
         return section
 
