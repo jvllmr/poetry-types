@@ -9,5 +9,12 @@
     ":automergeMinor"
   ],
   "labels": ["dependencies"],
-  "rangeStrategy": "bump"
+  "rangeStrategy": "bump",
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["python"],
+      "matchManagers": ["poetry"],
+      "enabled": false
+    }
+  ]
 }
