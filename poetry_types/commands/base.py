@@ -145,7 +145,7 @@ class TypesCommand(InitCommand, InstallerCommand):
         self.poetry.file.write(content)
         return removed
 
-    @functools.lru_cache(maxsize=None)
+    @functools.cache
     def find_package(self, package: str):
         try:
             return self._find_best_version_for_package(package)[0]
