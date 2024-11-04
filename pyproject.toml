@@ -21,7 +21,7 @@ tomlkit = ">=0.13.2"
 [tool.poetry.group.dev.dependencies]
 pytest = ">=8.3.3"
 tox = ">=4.23.2"
-ruff = ">=0.7.1"
+ruff = ">=0.7.2"
 poetry = ">=1.8.4"
 
 
