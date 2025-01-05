@@ -48,7 +48,7 @@ jobs:
       fail-fast: true
       matrix:
         python-version: [3.9, "3.10", "3.11", "3.12", "3.13"]
-        poetry-version: [1.8.4]
+        poetry-version: [2.0.0]
         os: [ubuntu-latest, macos-latest]
     steps:
       - uses: actions/checkout@v4
