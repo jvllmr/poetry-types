@@ -68,8 +68,9 @@ class UpdateTypesCommand(TypesCommand):
                     for requirement in requirements
                 }
             )
+
         if to_remove:
-            whitelist.update(self.remove_packages(to_remove, True))
+            self.remove_packages(to_remove, True)
 
         if packages:
             whitelist.update(
