@@ -31,11 +31,12 @@ class CustomTOMLFile(TOMLFile):
     @property
     def poetry(self) -> TOMLDocument:
         content = self.read()
-        return content["tool"]["poetry"]
+
+        return content["tool"]["poetry"]  # type: ignore
 
     def write_poetry(self, doc: TOMLDocument):
         content = self.read()
-        content["tool"]["poetry"] = doc
+        content["tool"]["poetry"] = doc  # type: ignore
         self.write(content)
 
 

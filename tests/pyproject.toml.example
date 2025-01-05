@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "poetry-types"
+name = "poetry-types-tests"
 version = "0.2.2"
-description = "A poetry plugin that automatically adds type subs as dependencies like the mypy --install-types command."
+description = "Ghost package for testing"
 authors = ["Jan Vollmer <jan@vllmr.dev>"]
 license = "MIT License"
 readme="README.md"
@@ -18,8 +18,8 @@ classifiers=[
     ]
 
 [tool.poetry.dependencies]
-python = "^3.8"
-poetry = "^1.6"
+python = "^3.9"
+poetry = "^2.0"
 colorama = "^0.4.4"
 
 [tool.poetry.group.dev.dependencies]
@@ -34,8 +34,7 @@ types-colorama = "^0.4.6"
 types-sqlalchemy = "^1.4"
 xlsxwriter = "*"
 
-[tool.poetry.plugins."poetry.application.plugin"]
-poetry-types = "poetry_types.poetry_types:PoetryTypes"
+
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

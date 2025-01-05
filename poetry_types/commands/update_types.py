@@ -38,7 +38,12 @@ class UpdateTypesCommand(TypesCommand):
         return packages
 
     def handle(self):
-        packages = self.argument("packages")
+        raw_packages: list[str] | None = self.argument("packages")
+        packages = (
+            [p for p in self.convert_to_type_packages_names(raw_packages)]
+            if raw_packages
+            else []
+        )
 
         whitelist = {}
         self.sanitize_types_section()
@@ -60,6 +65,10 @@ class UpdateTypesCommand(TypesCommand):
             if self.is_package_type_package_name(package)
         }
 
+        if packages:
+            to_add = to_add.intersection(packages)
+            to_remove = to_remove.intersection(packages)
+
         if to_add:
             requirements = self.install_packages(to_add, True)
             whitelist.update(
@@ -68,18 +77,23 @@ class UpdateTypesCommand(TypesCommand):
                     for requirement in requirements
                 }
             )
+
         if to_remove:
-            whitelist.update(self.remove_packages(to_remove, True))
+            self.remove_packages(to_remove, True)
 
         if packages:
-            whitelist.update(
-                {name: "*" for name in self.convert_to_type_packages_names(packages)}
-            )
+            whitelist.update({name: "*" for name in packages})
+        else:
+            # only_groups broke
+            # add all packages from types section to whitelist as a workaround
+            whitelist.update({name: "*" for name in type_section_packages})
 
-        self.installer.whitelist(whitelist)
-
-        self.installer.only_groups([GROUP_NAME])
-
+        if whitelist:
+            self.installer.whitelist(whitelist)
+        # seems to be broken with poetry 2.0.0
+        # explicitly added packages from section to whitelist instead with else block
+        # self.installer.only_groups([GROUP_NAME])
+        self.installer.execute_operations(True)
         self.installer.update(True)
 
         status = self.installer.run()
