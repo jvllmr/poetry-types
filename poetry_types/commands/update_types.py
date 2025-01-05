@@ -79,7 +79,7 @@ class UpdateTypesCommand(TypesCommand):
         self.installer.whitelist(whitelist)
 
         self.installer.only_groups([GROUP_NAME])
-
+        self.installer.execute_operations(True)
         self.installer.update(True)
 
         status = self.installer.run()
