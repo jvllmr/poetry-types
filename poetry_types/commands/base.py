@@ -199,7 +199,7 @@ class TypesCommand(InitCommand, InstallerCommand):
                     constraint_name,
                     constraint,
                     groups=[GROUP_NAME],
-                    root_dir=self.poetry.file.parent,
+                    root_dir=self.poetry.file.path.parent,
                 )
             )
         if not prepare_only:
