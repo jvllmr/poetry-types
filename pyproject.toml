@@ -14,7 +14,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.9"
-poetry = ">=2.0"
+poetry = "^2.0"
 packaging = ">=24.2"
 tomlkit = ">=0.13.2"
 
