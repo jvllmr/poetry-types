@@ -75,10 +75,16 @@ class UpdateTypesCommand(TypesCommand):
             whitelist.update(
                 {name: "*" for name in self.convert_to_type_packages_names(packages)}
             )
+        else:
+            # only_groups broke
+            # add all packages from types section to whitelist as a workaround
+            whitelist.update({name: "*" for name in type_section_packages})
 
-        self.installer.whitelist(whitelist)
-
-        self.installer.only_groups([GROUP_NAME])
+        if whitelist:
+            self.installer.whitelist(whitelist)
+        # seems to be broken with poetry 2.0.0
+        # explicitly added packages from section to whitelist instead with else block
+        # self.installer.only_groups([GROUP_NAME])
         self.installer.execute_operations(True)
         self.installer.update(True)
 

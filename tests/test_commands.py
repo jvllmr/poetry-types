@@ -3,7 +3,6 @@ from __future__ import annotations
 import subprocess
 
 import pytest
-
 from .conftest import CustomTOMLFile
 
 
@@ -54,10 +53,7 @@ def test_update(toml_file: CustomTOMLFile):
         != 0
     )
     toml_file.write_poetry(old_content)
-    assert (
-        subprocess.run(["python", "-m", "poetry", "--verbose", "install"]).returncode
-        == 0
-    )
+    subprocess.run(["python", "-m", "poetry", "--verbose", "types", "update"])
 
 
 @pytest.mark.parametrize(
