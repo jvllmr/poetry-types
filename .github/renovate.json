@@ -12,7 +12,7 @@
   "rangeStrategy": "bump",
   "packageRules": [
     {
-      "matchPackagePatterns": ["python"],
+      "matchPackageNames": ["python", "poetry"],
       "matchManagers": ["poetry"],
       "enabled": false
     }
