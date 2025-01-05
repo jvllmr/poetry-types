@@ -38,7 +38,12 @@ class UpdateTypesCommand(TypesCommand):
         return packages
 
     def handle(self):
-        packages = self.argument("packages")
+        raw_packages: list[str] | None = self.argument("packages")
+        packages = (
+            [p for p in self.convert_to_type_packages_names(raw_packages)]
+            if raw_packages
+            else []
+        )
 
         whitelist = {}
         self.sanitize_types_section()
@@ -60,6 +65,10 @@ class UpdateTypesCommand(TypesCommand):
             if self.is_package_type_package_name(package)
         }
 
+        if packages:
+            to_add = to_add.intersection(packages)
+            to_remove = to_remove.intersection(packages)
+
         if to_add:
             requirements = self.install_packages(to_add, True)
             whitelist.update(
@@ -73,9 +82,7 @@ class UpdateTypesCommand(TypesCommand):
             self.remove_packages(to_remove, True)
 
         if packages:
-            whitelist.update(
-                {name: "*" for name in self.convert_to_type_packages_names(packages)}
-            )
+            whitelist.update({name: "*" for name in packages})
         else:
             # only_groups broke
             # add all packages from types section to whitelist as a workaround
