@@ -8,12 +8,13 @@
 
 ## Description
 
-This is a plugin to poetry for the upcoming poetry 1.2 plugin feature.
-It installs/removes/updates typing stubs via following commands:
+This is a poetry plugin that installs/removes/updates typing stubs via following commands:
 
 - `poetry types add <package names>`
 - `poetry types remove <package names>`
 - `poetry types update <package names>`
+
+Added packages will be added to the `types` group.
 
 ## Usage examples
 
@@ -29,7 +30,7 @@ Run `poetry self add poetry-types` for global install or run `poetry add -D poet
 
 ```yaml
 - repo: https://github.com/jvllmr/poetry-types
-  rev: v0.5.1
+  rev: v0.6.0
   hooks:
     - id: poetry-types
 ```
