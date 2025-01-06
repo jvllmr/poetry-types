@@ -33,7 +33,7 @@ forbidden = ["print"]
 poetry-types = "poetry_types.poetry_types:PoetryTypes"
 
 [build-system]
-requires = ["poetry-core>=1.9.1"]
+requires = ["poetry-core>=2.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
