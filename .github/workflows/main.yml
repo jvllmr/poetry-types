@@ -33,7 +33,7 @@ jobs:
           path: ${{ env.PIP_CACHE_DIR }}
           key: ${{ matrix.os }}${{ matrix.python-version }}${{ matrix.poetry-version }}
       - name: Set up poetry
-        uses: abatilo/actions-poetry@v2
+        uses: abatilo/actions-poetry@v4
         with:
           poetry-version: ${{ matrix.poetry-version }}
       - name: Install dependencies
@@ -63,7 +63,7 @@ jobs:
           path: ${{ env.PIP_CACHE_DIR }}
           key: ${{ matrix.os }}${{ matrix.python-version }}${{ matrix.poetry-version }}
       - name: Set up poetry
-        uses: abatilo/actions-poetry@v3
+        uses: abatilo/actions-poetry@v4
         with:
           poetry-version: ${{ matrix.poetry-version }}
       - name: Before Add
