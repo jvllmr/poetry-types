@@ -1,32 +1,32 @@
-[tool.poetry]
+[project]
 name = "poetry-types"
 version = "0.6.0"
+authors = [{ name = "Jan Vollmer", email = "jan@vllmr.dev" }]
 description = "A poetry plugin that adds/removes type stubs as dependencies like the mypy --install-types command."
-authors = ["Jan Vollmer <jan@vllmr.dev>"]
 license = "MIT License"
 readme = "README.md"
-repository = "https://github.com/jvllmr/poetry-types"
+dynamic = ["classifiers"]
+requires-python = ">=3.9,<4.0"
+dependencies = ["poetry>=2.0,<3.0", "packaging>=24.2", "tomlkit>=0.13.2"]
+keywords = ["poetry"]
+[project.urls]
+Repository = "https://github.com/jvllmr/poetry-types"
+
+
+[tool.poetry]
+requires-poetry = ">=2.0"
 classifiers = [
   "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent",
   "Natural Language :: English",
 ]
 
-[tool.poetry.dependencies]
-python = "^3.9"
-poetry = "^2.0"
-packaging = ">=24.2"
-tomlkit = ">=0.13.2"
 
 [tool.poetry.group.dev.dependencies]
 pytest = ">=8.3.4"
 tox = ">=4.23.2"
 ruff = ">=0.8.4"
 poetry = ">=1.8.5"
-
-
-[tool.pyaphid]
-forbidden = ["print"]
 
 
 [tool.poetry.plugins."poetry.application.plugin"]
@@ -52,3 +52,11 @@ commands =
     pytest
 
 """
+
+[tool.ruff]
+target-version = "py39"
+
+
+[tool.ruff.lint]
+select = ["T", "UP", "RUF"]
+ignore = ["RUF012"]

@@ -11,8 +11,8 @@
   "rangeStrategy": "bump",
   "packageRules": [
     {
-      "matchPackageNames": ["python", "poetry"],
-      "matchManagers": ["poetry"],
+      "matchPackageNames": ["poetry"],
+      "matchManagers": ["pep621"],
       "enabled": false
     }
   ]
