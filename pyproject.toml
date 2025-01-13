@@ -26,14 +26,14 @@ classifiers = [
 pytest = ">=8.3.4"
 tox = ">=4.23.2"
 ruff = ">=0.9.1"
-poetry = ">=2.0.0"
+poetry = ">=2.0.1"
 
 
 [tool.poetry.plugins."poetry.application.plugin"]
 poetry-types = "poetry_types.poetry_types:PoetryTypes"
 
 [build-system]
-requires = ["poetry-core>=2.0.0"]
+requires = ["poetry-core>=2.0.1"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
