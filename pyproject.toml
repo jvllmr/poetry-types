@@ -25,15 +25,15 @@ classifiers = [
 [tool.poetry.group.dev.dependencies]
 pytest = ">=8.3.4"
 tox = ">=4.24.1"
-ruff = ">=0.9.3"
-poetry = ">=2.0.1"
+ruff = ">=0.9.6"
+poetry = ">=2.1.1"
 
 
 [tool.poetry.plugins."poetry.application.plugin"]
 poetry-types = "poetry_types.poetry_types:PoetryTypes"
 
 [build-system]
-requires = ["poetry-core>=2.0.1"]
+requires = ["poetry-core>=2.1.1"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
