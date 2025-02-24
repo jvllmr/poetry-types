@@ -25,7 +25,7 @@ classifiers = [
 [tool.poetry.group.dev.dependencies]
 pytest = ">=8.3.4"
 tox = ">=4.24.1"
-ruff = ">=0.9.6"
+ruff = ">=0.9.7"
 poetry = ">=2.1.1"
 
 
