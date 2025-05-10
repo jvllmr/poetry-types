@@ -7,13 +7,17 @@
     "schedule:weekly",
     ":automergeMinor"
   ],
-  "labels": ["dependencies"],
+  "labels": [
+    "dependencies"
+  ],
   "rangeStrategy": "bump",
-
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": [".github/workflows/*.yml", ".github/workflows/*.yaml"],
+      "managerFilePatterns": [
+        "/.github/workflows/*.yml/",
+        "/.github/workflows/*.yaml/"
+      ],
       "matchStrings": [
         "poetry-version:.*\\[ *(?<currentValue>\\d+\\.\\d+\\.\\d+) *\\]"
       ],
@@ -24,20 +28,29 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": ["poetry"],
-      "matchManagers": ["pep621"],
+      "matchPackageNames": [
+        "poetry"
+      ],
+      "matchManagers": [
+        "pep621"
+      ],
       "enabled": false
     },
     {
       "description": "Do not update required python version",
-      "matchDepTypes": ["requires-python"],
+      "matchDepTypes": [
+        "requires-python"
+      ],
       "enabled": false
     },
     {
       "description": "Group poetry updates",
       "groupName": "poetry",
       "groupSlug": "poetry",
-      "matchDepNames": ["poetry", "poetry-core"]
+      "matchDepNames": [
+        "poetry",
+        "poetry-core"
+      ]
     }
   ]
 }
