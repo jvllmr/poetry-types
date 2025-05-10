@@ -14,7 +14,9 @@
     {
       "customType": "regex",
       "managerFilePatterns": [".github/workflows/.*\\.ya?ml"],
-      "matchStrings": ["poetry-version:.*(?<currentValue>\\d+\\.\\d+\\.\\d+)"],
+      "matchStrings": [
+        "poetry-version:.*\\[ *(?<currentValue>\\d+\\.\\d+\\.\\d+) *\\]"
+      ],
       "depNameTemplate": "poetry",
       "datasourceTemplate": "pypi",
       "description": "Update pinned poetry ci version"
