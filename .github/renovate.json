@@ -13,7 +13,7 @@
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": [".github/workflows/.*\\.ya?ml"],
+      "fileMatch": [".github/workflows/*.yml", ".github/workflows/*.yaml"],
       "matchStrings": [
         "poetry-version:.*\\[ *(?<currentValue>\\d+\\.\\d+\\.\\d+) *\\]"
       ],
