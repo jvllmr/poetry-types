@@ -14,14 +14,14 @@ repos:
     hooks:
       - id: pyaphid
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.9.4
+    rev: v0.11.10
     hooks:
       - id: ruff
         args:
           - --fix
       - id: ruff-format
   - repo: https://github.com/jvllmr/pre-commit-prettier
-    rev: v3.4.2
+    rev: v4.0.0-alpha.12
     hooks:
       - id: prettier
         additional_dependencies: [prettier@latest, prettier-plugin-toml@latest]
