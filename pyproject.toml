@@ -7,7 +7,7 @@ license = "MIT License"
 readme = "README.md"
 dynamic = ["classifiers"]
 requires-python = ">=3.9,<4.0"
-dependencies = ["poetry>=2.0,<3.0", "packaging>=24.2", "tomlkit>=0.13.3"]
+dependencies = ["poetry>=2.0,<3.0", "packaging>=25", "tomlkit>=0.13.3"]
 keywords = ["poetry"]
 [project.urls]
 Repository = "https://github.com/jvllmr/poetry-types"
