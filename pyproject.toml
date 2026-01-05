@@ -32,7 +32,7 @@ requires-poetry = ">=2.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = ">=9.0.2"
-tox = ">=4.32.0"
+tox = ">=4.33.0"
 ruff = ">=0.14.10"
 poetry = ">=2.2.1"
 
