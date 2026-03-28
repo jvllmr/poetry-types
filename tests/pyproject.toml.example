@@ -18,12 +18,12 @@ classifiers=[
     ]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.10"
 poetry = "^2.0"
 colorama = "^0.4.4"
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^8.0"
+pytest = "^9.0"
 tox = "^4.0"
 
 [tool.isort]
