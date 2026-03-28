@@ -1,6 +1,6 @@
 [project]
 name = "poetry-types"
-version = "0.6.0"
+version = "0.6.1.post1"
 authors = [{ name = "Jan Vollmer", email = "jan@vllmr.dev" }]
 description = "A poetry plugin that adds/removes type stubs as dependencies like the mypy --install-types command."
 license = "MIT License"
