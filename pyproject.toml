@@ -6,7 +6,7 @@ description = "A poetry plugin that adds/removes type stubs as dependencies like
 license = "MIT License"
 readme = "README.md"
 requires-python = ">=3.10,<4.0"
-dependencies = ["poetry>=2.3.4,<3.0", "packaging>=26.0", "tomlkit>=0.14.0"]
+dependencies = ["poetry>=2.3.4,<3.0", "packaging>=26.2", "tomlkit>=0.14.0"]
 keywords = ["poetry", "types", "type", "plugin"]
 classifiers = [
     "Environment :: Plugins",
@@ -32,8 +32,8 @@ requires-poetry = ">=2.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = ">=9.0.3"
-tox = ">=4.52.1"
-ruff = ">=0.15.10"
+tox = ">=4.53.0"
+ruff = ">=0.15.12"
 poetry = ">=2.3.4"
 
 
