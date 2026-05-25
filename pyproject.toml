@@ -41,7 +41,7 @@ poetry = ">=2.3.4"
 poetry-types = "poetry_types.poetry_types:PoetryTypes"
 
 [build-system]
-requires = ["poetry-core>=2.4.0"]
+requires = ["poetry-core>=2.4.1"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
