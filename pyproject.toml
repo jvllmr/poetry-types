@@ -32,8 +32,8 @@ requires-poetry = ">=2.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = ">=9.0.3"
-tox = ">=4.55.0"
-ruff = ">=0.15.15"
+tox = ">=4.55.1"
+ruff = ">=0.15.16"
 poetry = ">=2.3.4"
 
 
