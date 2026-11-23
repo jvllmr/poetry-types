@@ -40,9 +40,7 @@ class UpdateTypesCommand(TypesCommand):
     def handle(self):
         raw_packages: list[str] | None = self.argument("packages")
         packages = (
-            [p for p in self.convert_to_type_packages_names(raw_packages)]
-            if raw_packages
-            else []
+            [*self.convert_to_type_packages_names(raw_packages)] if raw_packages else []
         )
 
         whitelist = {}
